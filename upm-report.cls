@@ -518,7 +518,7 @@
         \texttt{%
             @mastersthesis\{citekey,\\
                 title   = \{\@title\},\\
-                author  = \{\@bibauthor~\textbackslash\& \@bibdirector \ifx\@codirectorsex\@empty\else~\textbackslash\& \@bibcodirector \fi \},\\
+                author  = \{\@bibauthor~ and \@bibdirector \ifx\@codirectorsex\@empty\else~ and \@bibcodirector \fi \},\\
                 school  = \{\schoolname\},\\
                 year    = \{\the\year\},\\
                 month   = \{\the\month\},\\
