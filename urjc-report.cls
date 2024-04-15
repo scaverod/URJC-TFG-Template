@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{upm-report}  %[2023-05-31 v1.0 UPM Report Template]
+\ProvidesClass{urjc-report}
 
 \LoadClass[12pt,a4paper,oneside]{book}
 
@@ -37,7 +37,7 @@
 % Opciones de la clase
 %
 \RequirePackage{kvoptions} % Para usar argumentos al importar la clase
-\SetupKeyvalOptions{family=@upm, prefix=@upm@}
+\SetupKeyvalOptions{family=@urjc, prefix=@urjc@}
 
 % Opciones de configuración de la clase
 \DeclareStringOption{school}
@@ -53,10 +53,10 @@
 \newcommand{\schoolabbr}{}
 \newcommand{\schoollogo}{}
 \newcommand{\schooladdress}{}
-\ifthenelse{\equal{\@upm@school}{etsii}}{%
+\ifthenelse{\equal{\@urjc@school}{etsii}}{%
     \renewcommand{\schoolname}{E.T.S. de Ingeniería Informática}
     \renewcommand{\schoolabbr}{ETSII}
-    \renewcommand{\schoollogo}{upm-report/logos/logo-urjc-etsii.png}
+    \renewcommand{\schoollogo}{urjc-report/logos/logo-urjc-etsii.png}
     \renewcommand{\schooladdress}{%
         Campus de Móstoles, Calle Tulipán s/n.\\
         28933 Móstoles, Madrid
@@ -65,86 +65,86 @@
     \definecolor{linkcolor}{RGB}{203, 0, 23}
 }{}
 \ifthenelse{\equal{\schoolname}{}}{
-    \PackageError{upm-report}{School}{Falta el parámetro 'school'}
+    \PackageError{urjc-report}{School}{Falta el parámetro 'school'}
 }{}
 
 % Variables relacionadas con el tipo de memoria (arg. 'type')
 \newcommand{\reporttype}{}
 \newcommand{\reporttypeabbr}{}
-\ifthenelse{\equal{\@upm@type}{pfg}}{
+\ifthenelse{\equal{\@urjc@type}{pfg}}{
     \renewcommand{\reporttype}{Proyecto Fin de Grado}
     \renewcommand{\reporttypeabbr}{PFG}
 }{}
-\ifthenelse{\equal{\@upm@type}{tfg}}{
+\ifthenelse{\equal{\@urjc@type}{tfg}}{
     \renewcommand{\reporttype}{Trabajo Fin de Grado}
     \renewcommand{\reporttypeabbr}{TFG}
 }{}
-\ifthenelse{\equal{\@upm@type}{pfm}}{
+\ifthenelse{\equal{\@urjc@type}{pfm}}{
     \renewcommand{\reporttype}{Proyecto Fin de Máster}
     \renewcommand{\reporttypeabbr}{PFM}
 }{}
-\ifthenelse{\equal{\@upm@type}{tfm}}{
+\ifthenelse{\equal{\@urjc@type}{tfm}}{
     \renewcommand{\reporttype}{Trabajo Fin de Máster}
     \renewcommand{\reporttypeabbr}{TFM}
 }{}
-\ifthenelse{\equal{\@upm@type}{td}}{
+\ifthenelse{\equal{\@urjc@type}{td}}{
     \renewcommand{\reporttype}{Tesis Doctoral}
     \renewcommand{\reporttypeabbr}{PhD}
 }{}
 \ifthenelse{\equal{\reporttype}{}}{
-    \PackageError{upm-report}{Report type}{Falta el parámetro 'type'}
+    \PackageError{urjc-report}{Report type}{Falta el parámetro 'type'}
 }{}
 
 % Variables relacionadas con el título de estudios (arg. 'degree')
 \newcommand{\degreecode}{}
 \newcommand{\degreename}{}
 %% ETSIDI
-\ifthenelse{\equal{\@upm@degree}{GCID}}{
+\ifthenelse{\equal{\@urjc@degree}{GCID}}{
     \renewcommand{\degreecode}{GCID}
     \renewcommand{\degreename}{Grado en Ciencia e Ingeniería de Datos}
 }{}
-\ifthenelse{\equal{\@upm@degree}{GDDV}}{
+\ifthenelse{\equal{\@urjc@degree}{GDDV}}{
     \renewcommand{\degreecode}{GDDV}
     \renewcommand{\degreename}{Grado en Diseño y Desarrollo de Videojuegos}
 }{}
-\ifthenelse{\equal{\@upm@degree}{GIC}}{
+\ifthenelse{\equal{\@urjc@degree}{GIC}}{
     \renewcommand{\degreecode}{GIC}
     \renewcommand{\degreename}{Grado en Ingeniería de Computadores}
 }{}
-\ifthenelse{\equal{\@upm@degree}{GICIB}}{
+\ifthenelse{\equal{\@urjc@degree}{GICIB}}{
     \renewcommand{\degreecode}{GICIB}
     \renewcommand{\degreename}{Grado en Ingeniería de la Ciberseguridad}
 }{}
-\ifthenelse{\equal{\@upm@degree}{GIS}}{
+\ifthenelse{\equal{\@urjc@degree}{GIS}}{
     \renewcommand{\degreecode}{GIS}
     \renewcommand{\degreename}{Grado en Ingeniería del Software}
 }{}
-\ifthenelse{\equal{\@upm@degree}{GII}}{
+\ifthenelse{\equal{\@urjc@degree}{GII}}{
     \renewcommand{\degreecode}{GII}
     \renewcommand{\degreename}{Grado en Ingeniería Informática}
 }{}
-\ifthenelse{\equal{\@upm@degree}{GIA}}{
+\ifthenelse{\equal{\@urjc@degree}{GIA}}{
     \renewcommand{\degreecode}{GIA}
     \renewcommand{\degreename}{Grado en Inteligencia Artificial}
 }{}
-\ifthenelse{\equal{\@upm@degree}{MAT}}{
+\ifthenelse{\equal{\@urjc@degree}{MAT}}{
     \renewcommand{\degreecode}{MAT}
     \renewcommand{\degreename}{Grado en Matemáticas}
 }{}
 \ifthenelse{\equal{\degreecode}{}}{
-    \PackageError{upm-report}{Degree}{Falta el parámetro 'degree'}
+    \PackageError{urjc-report}{Degree}{Falta el parámetro 'degree'}
 }{}
 
 % Variables relacionadas con el sexo del autor (arg. 'degree')
-\newcommand{\authorsex}{\@upm@authorsex}
+\newcommand{\authorsex}{\@urjc@authorsex}
 \ifthenelse{\not \( \equal{\authorsex}{m} \or \equal{\authorsex}{f} \)}{
-    \PackageError{upm-report}{Author sex}{Falta el parámetro 'authorsex'}
+    \PackageError{urjc-report}{Author sex}{Falta el parámetro 'authorsex'}
 }{}
 
 % Variables relacionadas con el sexo del director (arg. 'degree')
-\newcommand{\directorsex}{\@upm@directorsex}
+\newcommand{\directorsex}{\@urjc@directorsex}
 \ifthenelse{\not \( \equal{\directorsex}{m} \or \equal{\directorsex}{f} \)}{
-    \PackageError{upm-report}{Director sex}{Falta el parámetro 'directorsex'}
+    \PackageError{urjc-report}{Director sex}{Falta el parámetro 'directorsex'}
 }{}
 
 
@@ -253,7 +253,7 @@
 \RequirePackage{microtype} % Mejoras tipográficas generales
 % TODO Cambiar los tipos de letra según la guía de estilos de la escuela
 \setmainfont[
-    Path=upm-report/fonts/Montserrat/,
+    Path=urjc-report/fonts/Montserrat/,
     Extension=.ttf,
     UprightFont=*-Regular,
     BoldFont=*-SemiBold,
@@ -262,7 +262,7 @@
 ]{Montserrat}
 
 \setsansfont[
-    Path=upm-report/fonts/Barlow Condensed/,
+    Path=urjc-report/fonts/Barlow Condensed/,
     Extension=.ttf,
     UprightFont=*-Medium,
     BoldFont=*-Bold,
@@ -271,7 +271,7 @@
 ]{BarlowCondensed}
 
 \setmonofont[
-    Path=upm-report/fonts/Fira Code/,
+    Path=urjc-report/fonts/Fira Code/,
     Extension=.ttf,
     UprightFont=*-regular,
     BoldFont=*-bold,
@@ -296,14 +296,14 @@
 \RequirePackage{subcaption} % Pies de subfiguras
 
 
-\DeclareCaptionFormat{caption-upm}{#1#2~\small #3}
-\DeclareCaptionLabelFormat{caption-upm}{\textbf{#1 #2}}
-\DeclareCaptionLabelSeparator{caption-upm}{.}
+\DeclareCaptionFormat{caption-urjc}{#1#2~\small #3}
+\DeclareCaptionLabelFormat{caption-urjc}{\textbf{#1 #2}}
+\DeclareCaptionLabelSeparator{caption-urjc}{.}
 
 \captionsetup{
-    format=caption-upm,
-    labelformat=caption-upm,
-    labelsep=caption-upm,
+    format=caption-urjc,
+    labelformat=caption-urjc,
+    labelsep=caption-urjc,
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -441,7 +441,7 @@
     \AddToShipoutPicture*{%
         \AtPageLowerLeft{%
             \makebox[1\paperwidth][r]{%
-                \includegraphics[width=0.9\paperwidth]{upm-report/logos/logo-urjc}
+                \includegraphics[width=0.9\paperwidth]{urjc-report/logos/logo-urjc}
             }%
         }
         \put(0,0){%

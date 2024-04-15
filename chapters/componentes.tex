@@ -50,7 +50,7 @@ Sin embargo, en el caso de que quisiésemos más de una ecuación en el mismo bl
 \end{align}
 \end{lstlisting}
 \end{minipage}%
-\begin{minipage}[h]{.5\textwidth}
+\begin{minipage}{.5\textwidth}
 \begin{align}
     u  &= \arctan x \\ 
     du &= \frac{1}{1 + x^2}dx
@@ -187,7 +187,7 @@ La sintaxis es bastante autoexplicativa. El entorno \texttt{figure} es el que de
 
 En definitiva, la imagen (figura~\ref{fig:img-vault-boy}) se mostrará con un ancho igual al 25\% del ancho que ocupa el texto, centrada, con un pie de foto y una etiqueta para referenciar.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=0.25\textwidth]{figures/vault-boy.png}
     \caption{\label{fig:img-vault-boy} Vault Boy approves that}
@@ -220,7 +220,7 @@ El comando \texttt{includegraphics} puede importar los formatos típicos de imag
 
 En realidad cada subfigura se trata como una figura normal, pero en relación con el \textit{float} contenedor. Cuando a una subfigura se le especifica un ancho, se le está diciendo al compilador de qué ancho es esa subfigura en concreto (en nuestro caso 0.3 veces el ancho de la línea). Sin embargo, a la imagen se le da un ancho total de \texttt{linewidth}, porque al estar dentro de su espacio de subfigura, el ancho ha cambiado. El resultado es el que se observa en la figura~\ref{fig:subfigures}. Por cierto, también podemos referenciar a los pies de las subfiguras (e.g. Así:~\ref{fig:subfigure-1}).
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\begin{subfigure}{.3\textwidth}
 		\includegraphics[width=\linewidth]{figures/vault-boy.png}
@@ -306,7 +306,7 @@ Las entradas se escribirán dentro del fichero \texttt{frontmatter/glossary.tex}
 
 Luego, dentro del texto, podremos hacer referencia a dichas entradas con los comandos que se muestran en la tabla~\ref{tab:glossary-commands}.
 
-\begin{table}[h]
+\begin{table}
     \caption{\label{tab:glossary-commands}Comandos para incluir términos del glosario en el texto de la memoria}
     \begin{tabularx}{\textwidth}{@{}lX@{}}
         \toprule
@@ -349,7 +349,7 @@ La regla general de los acrónimos y las siglas es que la primera vez que aparec
 
 Con los acrónimos se incluyen comandos adicionales para controlar su presentación. Estos son los mostrados en la tabla~\ref{tab:acronym-commands}
 
-\begin{table}[h]
+\begin{table}
     \caption{\label{tab:acronym-commands}Comandos específicos para controlar la presentación de acrónimos}
     \begin{tabularx}{\textwidth}{@{}lX@{}}
         \toprule
