@@ -1,8 +1,9 @@
-# Plantilla para Memoria de TFGs y TFMs de la Universidad Politécnica de Madrid
+# Plantilla para Memoria de TFGs y TFMs de la Universidad Rey Juan Carlos
 
 Este repositorio contiene una plantilla no oficial para el desarrollo de la memoria
-de Proyectos Fin de Grado (PFG) y Proyectos Fin de Máster (PFM) en la Universidad
-Politécnica de Madrid (UPM). La plantilla se ofrece bajo la licencia
+de Proyectos Fin de Grado (PFG) y Proyectos Fin de Máster (PFM) en la Universidad Rey Juan Carlos. 
+
+Esta plantilla es una adaptación de la plantilla de la Universidad Politécnica de Madrid (UPM) que podrás localizar en [https://github.com/blazaid/UPM-Report-Template](https://github.com/blazaid/UPM-Report-Template). La plantilla se ofrece bajo la licencia
 [Creative Commons 4.0 BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Descripción
@@ -55,4 +56,4 @@ licencia.
 Si tienes alguna pregunta o sugerencia sobre esta plantilla, no dudes en ponerte en contacto
 con el mantenedor.
 
-_Este proyecto no es oficial y no está afiliado ni respaldado por la Universidad Politécnica de Madrid (UPM)._
+_Este proyecto no es oficial y no está afiliado ni respaldado por la Universidad Rey Juan Carlos._
