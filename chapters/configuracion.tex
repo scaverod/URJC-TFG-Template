@@ -23,7 +23,7 @@ En este punto es donde se configura gran parte de la plantilla. Los parámetros 
 
 \begin{itemize}
     \item \texttt{school}: La escuela a la que pertenece el estudiante. La idea de la plantilla es que se use a lo largo de todas las escuelas de la UPM, y que cada una de ellas tenga su propia configuración. La escuela determinará, entre otras cosas, direcciones y colores principales. Las opciones se describen en el~\autoref{ch:escuelas-y-titulos}.
-    \item \texttt{type}: El tipo de memoria. Modifica algunos textos, incluida la portada. Puede tomar los valores \texttt{pfg} (\acrlong{pfg}) y \texttt{pfm}  (\acrlong{pfm}).
+    \item \texttt{type}: El tipo de memoria. Modifica algunos textos, incluida la portada. Puede tomar los valores \texttt{tfg} (\acrlong{tfg}) y \texttt{tfm}  (\acrlong{tfm}).
     \item \texttt{degree}: El grado al que aspira el estudiante. De momento sólo están definidos los grados que se imparten en la ETSISI (también en el~\autoref{ch:escuelas-y-titulos}).
     \item \texttt{authorsex}: Puede ser \texttt{m} (masculino) o \texttt{f} (femenino), y sirve para modificar algunos textos relacionados con el sexo del estudiante.
     \item \texttt{directorsex}: Similar al parámetro \texttt{authorsex}, pero para el director del proyecto.
@@ -56,7 +56,7 @@ Y ahora sí, se empieza con el grueso del documento. Tras incluir el glosario, d
 
 \lstinputlisting[language=tex,firstline=41,lastline=52,caption={Cómo se incluyen los capítulos y los apéndices},label={lst:starting-include-chapters}]{report.tex}
 
-La macro \lstinline{\appendix} del medio indica a partir de qué punto se añaden los apéndices. No son obligatorios, ni mucho menos, pero en algunos \glspl{pfg} y \glspl{pfm} se suelen incluir para dar información adicional de contexto que no es el objetivo de la memoria, pero sí interesante para complementar. Por ejemplo, en un \gls{pfm} para el estudio del comportamiento de conductores al volante, uno de los apéndices podría ser cada uno de los formularios que se le ofrecieron para rellenar a cada uno de los conductores de dicho estudio.
+La macro \lstinline{\appendix} del medio indica a partir de qué punto se añaden los apéndices. No son obligatorios, ni mucho menos, pero en algunos \glspl{tfg} y \glspl{tfm} se suelen incluir para dar información adicional de contexto que no es el objetivo de la memoria, pero sí interesante para complementar. Por ejemplo, en un \gls{tfm} para el estudio del comportamiento de conductores al volante, uno de los apéndices podría ser cada uno de los formularios que se le ofrecieron para rellenar a cada uno de los conductores de dicho estudio.
 
 Y ya estaría todo. Resumiendo, hay que configurar la plantilla, poner el autor, título y director del proyecto e incluir los capítulos y apéndices que queramos.
 
@@ -65,7 +65,7 @@ Y ya estaría todo. Resumiendo, hay que configurar la plantilla, poner el autor,
 
 La respuesta rápida es \enquote{como buenamente quieras/puedas}. En realidad la estructura de la memoria va a depender del tipo de trabajo desarrollado, pero con carácter general, los trabajos suelen seguir ciertas estructuras.
 
-Un \gls{pfg} es un trabajo cuyo propósito es demostrar que se han llegado a adquirir las competencias asociadas con la titulación cursada. Con esto queremos decir que, a diferencia de otros tipos de trabajo académico, en éste no es necesario realizar aportaciones originales al estado de la cuestión.
+Un \gls{tfg} es un trabajo cuyo propósito es demostrar que se han llegado a adquirir las competencias asociadas con la titulación cursada. Con esto queremos decir que, a diferencia de otros tipos de trabajo académico, en éste no es necesario realizar aportaciones originales al estado de la cuestión.
 
 Una estructura típica es la siguiente:
 
@@ -81,7 +81,7 @@ Una estructura típica es la siguiente:
     \item Glosario
 \end{enumerate}
 
-Un \gls{pfm}, a diferencia de un \gls{pfg} trata de profundizar más en un campo concreto de una disciplina, por lo que tiene a ser más extenso y mucho más específico.
+Un \gls{tfm}, a diferencia de un \gls{tfg} trata de profundizar más en un campo concreto de una disciplina, por lo que tiene a ser más extenso y mucho más específico.
 
 En términos generales, la estructura es similar. Sin embargo es de esperar que el nivel de exigencia sea mayor, ya que el estudiante que lo realiza debe demostrar que es un titulado superior. Esto se nota más en la fase de documentación, ya que al tratar de profundizar en un tema más específico, el trabajo de contextualizar y argumentar es más tedioso.
 
