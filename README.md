@@ -35,7 +35,7 @@ Para utilizar esta plantilla, es necesario:
 
 O también puedes usar el editor de textos Overleaf, online y que tiene disponible
 la plantilla directamente para su uso
-[en este enlace]([https://es.overleaf.com/latex/templates/upm-report-template/sxtmzsytgthp](https://giphy.com/stickers/work-progress-workinprogress-Lr4HRF6DEEJo90SQXF))
+[en este enlace]([https://es.overleaf.com/latex/templates/upm-report-template/sxtmzsytgthp](https://giphy.com/stickers/work-progress-workinprogress-Lr4HRF6DEEJo90SQXF).
 
 ## Contribución
 
