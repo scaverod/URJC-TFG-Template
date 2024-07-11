@@ -24,8 +24,10 @@
 \RequirePackage{ifthen}     % Para poder usar condicionales en la clase
 \RequirePackage{pdflscape}  % Posibilidad de páginas en apaisado
 \RequirePackage{xcolor}     % Mejoras sobre el paquete color
-\RequirePackage{algorithm}  % generación de pseudocódigos
-\RequirePackage{algorithmic}% generación de pseudocódigos 
+\RequirePackage{algorithm}  % Generación de pseudocódigos
+\RequirePackage{algorithmic}% Generación de pseudocódigos 
+\RequirePackage{colortbl}   % Color de tablas
+\RequirePackage{tabularx}   % Tablas avanzadas
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Valores constantes
