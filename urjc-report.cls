@@ -28,7 +28,6 @@
 \RequirePackage{algorithmic}% Generación de pseudocódigos 
 \RequirePackage{colortbl}   % Color de tablas
 \RequirePackage{tabularx}   % Tablas avanzadas
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Valores constantes
 %
@@ -151,7 +150,6 @@
 
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Variables
 %
@@ -179,10 +177,16 @@
         \gdef\@bibcodirector{#3}%
     }%
 }
+
+
+
+
+
 \newcommand{\@codirector}{} % Inicializar la macro del nombre del codirector para que esté vacía
 \newcommand{\@codirectorsex}{} % Inicializar la macro codirector sex para que esté vacía
 \newcommand{\@bibcodirector}{} % Inicializar la macro nombre del babero codirector para que esté vacía
 
+\newcommand{\githuburl}[1]{\def\@githuburl{#1}}
 
 \makeatother
 
@@ -506,6 +510,11 @@
             }{%
                 % No hacer nada si el parámetro no es 'm' ni 'f
             }}
+            \ifthenelse{\isundefined{\@githuburl}}{}{%
+                    \ifthenelse{\equal{\@githuburl}{}}{}{%
+                       \\\textbf{ GitHub }:    \url{\@githuburl},\\
+                    }%
+                }%
     }
     
     \par{
@@ -524,7 +533,12 @@
                 school  = \{\schoolname\},\\
                 year    = \{\the\year\},\\
                 month   = \{\the\month\},\\
-                type    = \{\reporttype\}\\
+                type    = \{\reporttype\},\\
+                \ifthenelse{\isundefined{\@githuburl}}{}{%
+                    \ifthenelse{\equal{\@githuburl}{}}{}{%
+                        url    = \{\url{\@githuburl\}},\\
+                    }%
+                }%
             \}
         }
     }
