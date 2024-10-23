@@ -434,7 +434,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Referencias y bibliografía
 %
-\RequirePackage[backend=biber,style=ieee]{biblatex}
+\RequirePackage[backend=biber,style=ieee,citestyle=numeric,]{biblatex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Portada
@@ -536,7 +536,7 @@
                 type    = \{\reporttype\},\\
                 \ifthenelse{\isundefined{\@githuburl}}{}{%
                     \ifthenelse{\equal{\@githuburl}{}}{}{%
-                        url    = \{\url{\@githuburl\}},\\
+                        url    = \{\url{\@githuburl}\},\\
                     }%
                 }%
             \}
