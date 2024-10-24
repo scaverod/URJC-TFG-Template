@@ -338,6 +338,7 @@
     unicode=true,
     colorlinks=true,
     linkcolor={linkcolor},
+    citecolor={linkcolor},
 }
 \makeatother
 
@@ -435,6 +436,9 @@
 % Referencias y bibliografía
 %
 \RequirePackage[backend=biber,style=ieee,citestyle=numeric,]{biblatex}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Portada

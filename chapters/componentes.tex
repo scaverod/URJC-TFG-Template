@@ -434,12 +434,16 @@ En esta entrada, \texttt{@tipo} indica el tipo de elemento (p. ej. \texttt{@arti
 
 \subsection{¿De qué manera puedo citar las referencias?}
 
-TBD~\cite{mcculloch1943logical}
+Para citar las referencias en el texto, puedes utilizar el comando \texttt{\textbackslash cite\{id\}} donde \texttt{id} corresponde al identificador único de la referencia que has definido en el fichero \texttt{references.bib}. Por ejemplo, si deseas citar un trabajo específico, puedes hacerlo de la siguiente manera:
 
-\section{Referencias cruzadas}
+\begin{quote}
+Esto es una cita ~\cite{mcculloch1943logical}
+\end{quote}
 
-TBD
+Si necesitas citar múltiples referencias al mismo tiempo, puedes separarlas con comas dentro del comando \texttt{\textbackslash cite\{...\}}. Por ejemplo:
 
-\section{Referencias a recursos externos}
+\begin{quote}
+O bien, dos citas~\cite{mcculloch1943logical,kotonya1998requirements}.
+\end{quote}
 
-TBD
+Esto generará en el texto las citas correspondientes, y al final del documento, el paquete \textit{biblatex} se encargará de crear la lista de referencias con las entradas que has citado. Recuerda que solo las referencias citadas aparecerán en la lista final, lo que permite mantener el documento ordenado y relevante.
