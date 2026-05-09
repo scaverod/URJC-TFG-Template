@@ -28,11 +28,13 @@
 \RequirePackage{algorithmic}% Generación de pseudocódigos 
 \RequirePackage{colortbl}   % Color de tablas
 \RequirePackage{tabularx}   % Tablas avanzadas
+\RequirePackage{epstopdf}   % Conversión de EPS a PDF para XeLaTeX
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Valores constantes
 %
 \def\universityname{Universidad Rey Juan Carlos}
-\def\templaterepository{https://github.com/scaverod/TFG-Report-Template.git}
+\def\templaterepository{https://github.com/scaverod/URJC-TFG-Template}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Opciones de la clase
@@ -178,22 +180,31 @@
     }%
 }
 
-
-
-
-
 \newcommand{\@codirector}{} % Inicializar la macro del nombre del codirector para que esté vacía
 \newcommand{\@codirectorsex}{} % Inicializar la macro codirector sex para que esté vacía
 \newcommand{\@bibcodirector}{} % Inicializar la macro nombre del babero codirector para que esté vacía
 
 \newcommand{\githuburl}[1]{\def\@githuburl{#1}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comandos para controlar el orden de las portadas
+%
+% \mostrarPortadaOficial{N}   — posición de la portada oficial de la ETSII (0=no mostrar, 1=primero, 2=segundo)
+% \mostrarPortadaNoficial{N}  — posición de la portada no oficial generada por la clase (0=no mostrar, 1=primero, 2=segundo)
+%
+% Si ambas reciben el mismo valor (distinto de 0), se muestran las dos:
+%   primero la No Oficial y luego la Oficial (comportamiento de seguridad).
+%
+\newcommand{\@posPortadaOficial}{0}
+\newcommand{\@posPortadaNoficial}{0}
+\newcommand{\mostrarPortadaOficial}[1]{\gdef\@posPortadaOficial{#1}}
+\newcommand{\mostrarPortadaNoficial}[1]{\gdef\@posPortadaNoficial{#1}}
+
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Idioma
 %
-% TODO Convertir el lenguaje en una opción del paquete
 \RequirePackage[spanish,es-tabla,es-ucroman]{babel}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -257,7 +268,6 @@
 %
 \RequirePackage{fontspec}  % Para importar fuentes externas
 \RequirePackage{microtype} % Mejoras tipográficas generales
-% TODO Cambiar los tipos de letra según la guía de estilos de la escuela
 \setmainfont[
     Path=urjc-report/fonts/Montserrat/,
     Extension=.ttf,
@@ -328,8 +338,6 @@
 \hypersetup{
     pdfauthor={\@author},
     pdftitle={\@title},
-    %pdfsubject={},   % TODO PONER ALGUNA OPCIÓN PARA DETERMINAR EL TEMA
-    %pdfkeywords={},  % TODO QUE LAS KEYWORDS SE USEN TAMBIÉN AQUÍ
     pdfcreator={\@author},
     pdfproducer={},
     breaklinks=true,
@@ -414,8 +422,6 @@
 
 
 \makeatletter
-% Impresión de licencia modificada para que incluya más cosas. Es un
-% clon de \docLicenseThis
 \newcommand{\licencia}{%
     \setlength{\doclicense@hsize}{\linewidth-\doclicense@imagewidth-\doclicense@imagedistance}%
     \begin{center}
@@ -432,16 +438,15 @@
     Todo cambio respecto a la obra original es responsabilidad exclusiva del presente autor.\\
 }
 \makeatother
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Referencias y bibliografía
 %
-\RequirePackage[backend=biber,style=ieee,citestyle=numeric,]{biblatex}
-
-
+\RequirePackage[backend=biber, style=ieee, sorting=nyt]{biblatex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Portada
+% Portada no oficial (generada por la clase, con barra lateral roja)
 %
 \makeatletter         
 \renewcommand\maketitle{{
@@ -488,6 +493,101 @@
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Portada oficial de la ETSII
+%
+% Reproduce el modelo oficial de la URJC (Anexo I):
+%   logo centrado, escuela, grado, curso académico, tipo de trabajo,
+%   título, autor y tutores.
+%
+\makeatletter
+\newcommand{\@cursoacademico}{}
+\newcommand{\cursoacademico}[1]{\gdef\@cursoacademico{#1}}
+
+\newcommand{\makeportadaoficial}{{%
+    \clearpage
+    \thispagestyle{empty}
+    \begin{center}
+        % Logo URJC color (EPS → PDF vía epstopdf, o PNG de respaldo)
+        % Se intenta primero el EPS en color; si no existe, se usa el PNG.
+        \IfFileExists{urjc-report/logos/URJ_logo_Color_POS.eps}{%
+            \includegraphics[width=7cm]{urjc-report/logos/URJ_logo_Color_POS.eps}%
+        }{%
+            \IfFileExists{urjc-report/logos/URJ_logo_Color_POS.pdf}{%
+                \includegraphics[width=7cm]{urjc-report/logos/URJ_logo_Color_POS.pdf}%
+            }{%
+                % Último recurso: logo PNG ya incluido en la plantilla
+                \includegraphics[width=7cm]{urjc-report/logos/logo-urjc}%
+            }%
+        }
+
+        \vspace{1.5cm}
+        {\large\bfseries\MakeUppercase{Escuela Técnica Superior de Ingeniería Informática}}
+
+        \vspace{0.8cm}
+        {\large\bfseries\MakeUppercase{\degreename}}
+
+        \ifthenelse{\equal{\@cursoacademico}{}}{}{%
+            \vspace{0.5cm}
+            {\large Curso Académico \@cursoacademico}
+        }
+
+        \vspace{0.5cm}
+        {\large\bfseries \reporttype}
+
+        \vspace{2cm}
+        {\Large\bfseries\MakeUppercase{\@title}}
+
+        \vspace{2.5cm}
+        \begin{tabular}{rl}
+            \textbf{\ifthenelse{\equal{\authorsex}{m}}{Autor}{Autora}:}
+                & \@author \\[1em]
+            \textbf{\ifthenelse{\equal{\directorsex}{m}}{Tutor}{Tutora}:}
+                & \@director
+            \ifthenelse{\equal{\@codirectorsex}{m}}{%
+                \\[0.3em] & \@codirector
+            }{\ifthenelse{\equal{\@codirectorsex}{f}}{%
+                \\[0.3em] & \@codirector
+            }{}}%
+        \end{tabular}
+    \end{center}
+    \clearpage
+}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lógica de presentación de portadas
+%
+% Reglas:
+%   · Si ambas tienen el mismo valor (≠ 0): NoOficial primero, Oficial después.
+%   · Si tienen valores distintos: la de valor 1 va primera, la de valor 2 va segunda.
+%   · Si alguna vale 0: no se muestra esa portada.
+%
+\makeatletter
+\newcommand{\@imprimirportadas}{%
+    \edef\@posO{\@posPortadaOficial}%
+    \edef\@posN{\@posPortadaNoficial}%
+    %
+    % Caso: ambas con el mismo valor ≠ 0  →  NoOficial primero, Oficial después
+    \ifthenelse{%
+        \NOT \equal{\@posN}{0} \AND \NOT \equal{\@posO}{0} \AND \equal{\@posN}{\@posO}%
+    }{%
+        \maketitle%
+        \makeportadaoficial%
+    }{%
+        % Caso general: ordenar por valor 1 → 2
+        % Primero imprimimos la que tenga posición 1 (si existe), luego la 2.
+        %
+        % Posición 1:
+        \ifthenelse{\equal{\@posN}{1}}{\maketitle}{}%
+        \ifthenelse{\equal{\@posO}{1}}{\makeportadaoficial}{}%
+        % Posición 2:
+        \ifthenelse{\equal{\@posN}{2}}{\maketitle}{}%
+        \ifthenelse{\equal{\@posO}{2}}{\makeportadaoficial}{}%
+    }%
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Licencia
 %
 \makeatletter
@@ -530,10 +630,17 @@
     \par{
         Si deseas citar este trabajo, la entrada completa en \hologo{BibTeX} es la siguiente:
 
+        % ----------------------------------------------------------------
+        % BUG FIX: el "and" tras el director sólo aparece si hay codirector
+        % ----------------------------------------------------------------
         \texttt{%
             @mastersthesis\{citekey,\\
                 title   = \{\@title\},\\
-                author  = \{\@bibauthor~ and \@bibdirector \ifx\@codirectorsex\@empty\else~ and \@bibcodirector \fi \},\\
+                author  = \{\@bibauthor~ and \@bibdirector%
+                    \ifthenelse{\equal{\@codirectorsex}{m} \OR \equal{\@codirectorsex}{f}}{%
+                        ~ and \@bibcodirector%
+                    }{}%
+                \},\\
                 school  = \{\schoolname\},\\
                 year    = \{\the\year\},\\
                 month   = \{\the\month\},\\
@@ -635,7 +742,8 @@
 %
 \makeatletter
 \AtBeginDocument{%
-    \maketitle
+    % Imprimir portadas según la configuración del usuario
+    \@imprimirportadas
     \makelicense
     \makeacknowledgements
     \makeresumen
@@ -664,7 +772,6 @@
     \printbibliography
     \chapter*{Índice de términos}
     \printglossaries
-    %\printindex  TODO Hacer el índice (por supuesto opcional)
     \makebackcover
 }
 \makeatother
