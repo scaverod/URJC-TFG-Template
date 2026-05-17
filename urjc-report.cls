@@ -742,7 +742,7 @@
 %
 \makeatletter
 \AtBeginDocument{%
-    % Imprimir portadas según la configuración del usuario
+    \frontmatter
     \@imprimirportadas
     \makelicense
     \makeacknowledgements
