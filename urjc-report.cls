@@ -46,10 +46,18 @@
 \DeclareStringOption{school}
 \DeclareStringOption{type}
 \DeclareStringOption{degree}
+\DeclareStringOption{academicyear}
 \DeclareStringOption{authorsex}
 \DeclareStringOption{directorsex}
 \DeclareStringOption{codirectorsex}
 \ProcessKeyvalOptions*
+
+% Variables relacionadas con el curso académico
+\newcommand{\academicyear}{\@urjc@academicyear}
+
+\ifthenelse{\equal{\academicyear}{}}{
+    \PackageError{urjc-report}{Academic year}{Falta el parámetro 'academicyear'}
+}{}
 
 % Variables relacionadas con la escuela (arg. 'school')
 \newcommand{\schoolname}{}
@@ -500,8 +508,7 @@
 %   título, autor y tutores.
 %
 \makeatletter
-\newcommand{\@cursoacademico}{}
-\newcommand{\cursoacademico}[1]{\gdef\@cursoacademico{#1}}
+
 
 \newcommand{\makeportadaoficial}{{%
     \clearpage
@@ -526,10 +533,8 @@
         \vspace{0.8cm}
         {\large\bfseries\MakeUppercase{\degreename}}
 
-        \ifthenelse{\equal{\@cursoacademico}{}}{}{%
-            \vspace{0.5cm}
-            {\large Curso Académico \@cursoacademico}
-        }
+\vspace{0.5cm}
+{\large \bfseries Curso Académico \academicyear}
 
         \vspace{0.5cm}
         {\large\bfseries \reporttype}
